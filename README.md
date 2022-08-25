@@ -4,6 +4,6 @@ Made with:
 - CSS
 - JavaScript
 
-DEMO (work in progress):
+DEMO:
 
-https://dibss.github.io/react-food-delivery-app/
+https://dibss.github.io/react-food-delivery-app
