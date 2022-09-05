@@ -31,17 +31,25 @@ const Cart = (props) => {
         onAdd={addItemToCartHandler.bind(null, item.id)}
         onRemove={cartItemRemoveHandler.bind(null, item.id)}
       />
-      
     )),
   ];
 
   const orderClickHandler = () => {
-    setHasConfirmed(true)
-  }
+    setHasConfirmed(true);
+  };
 
-  const cancelHandler = () => {
-    setHasConfirmed(false)
-  }
+  const modalActions = (
+    <div className={classes.actions}>
+      <button className={classes["button--alt"]} onClick={props.onCloseCart}>
+        Close
+      </button>
+      {hasItems && (
+        <button className={classes.button} onClick={orderClickHandler}>
+          Order
+        </button>
+      )}
+    </div>
+  );
 
   return (
     <Modal onClose={props.onCloseCart}>
@@ -49,14 +57,9 @@ const Cart = (props) => {
       <div className={classes.total}>
         <span>Total Amount</span>
         <span>{totalAmount}</span>
-      </div>
-      {hasConfirmed && <Checkout onCancel={cancelHandler}/>}
-      {!hasConfirmed && <div className={classes.actions}>
-        <button className={classes["button--alt"]} onClick={props.onCloseCart}>
-          Close
-        </button>
-        {hasItems && <button className={classes.button} onClick={orderClickHandler}>Order</button>}
-      </div>}
+      </div> 
+      {hasConfirmed && <Checkout onCancel={props.onCloseCart} />}
+      {!hasConfirmed && modalActions}
     </Modal>
   );
 };
