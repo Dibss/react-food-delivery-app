@@ -56,18 +56,18 @@ const AvailableMeals = () => {
   let content;
 
   if (error) {
-    content = <p>{error}</p>;
+    content = <section className={classes['meals-error']}><p>{error}</p></section>;
   }
 
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <section className={classes['meals-loading']}><p>Loading...</p></section>;
   }
 
   return (
     <section className={classes.meals}>
       <Card>
         <ul>{mealsList}</ul>
-        <section className={classes['meals-loading']}>{content}</section>
+        {content}
       </Card>
     </section>
   );
