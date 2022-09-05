@@ -44,6 +44,18 @@ const Checkout = (props) => {
     if (!formIsValid) {
       return;
     }
+
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode
+    });
+
+    nameInputRef.current.value = '';
+    streetInputRef.current.value = '';
+    postalCodeInputRef.current.value = '';
+    cityInputRef.current.value = '';
   };
 
   const nameControlClasses = `${classes.control} ${
